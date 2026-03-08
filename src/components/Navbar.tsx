@@ -9,19 +9,24 @@ export default function Navbar() {
                 </Link>
                 <ul className="flex gap-6">
                     <li>
-                        <Link href="/about" className="text-gray-600 hover:text-black">
+                        <a href="#" className="text-gray-600 hover:text-black">
+                            Hero
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about" className="text-gray-600 hover:text-black">
                             About
-                        </Link>
+                        </a>
                     </li>
                     <li>
-                        <Link href="/projects" className="text-gray-600 hover:text-black">
+                        <a href="#projects" className="text-gray-600 hover:text-black">
                             Projects
-                        </Link>
+                        </a>
                     </li>
                     <li>
-                        <Link href="/contact" className="text-gray-600 hover:text-black">
+                        <a href="#contact" className="text-gray-600 hover:text-black">
                             Contact
-                        </Link>
+                        </a>
                     </li>
                 </ul>
             </div>
