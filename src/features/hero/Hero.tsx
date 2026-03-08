@@ -1,6 +1,6 @@
 export default function Hero() {
     return(
-        <section className="flex min-h[70vh] flex-col items-center justify-center px-6 py-20">
+        <section id="hero" className="flex min-h[70vh] flex-col items-center justify-center px-6 py-20">
             <h1 className="text-center text-4xl font-bold tracking-tight text-black md:text-5xl">
                 TKG
             </h1>
