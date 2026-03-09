@@ -1,5 +1,7 @@
-export default function Hero() {
-    return(
+import { FC, memo } from "react";
+
+const Hero: FC = memo(() => {
+    return (
         <section id="hero" className="flex min-h[70vh] flex-col items-center justify-center px-6 py-20">
             <h1 className="text-center text-4xl font-bold tracking-tight text-black md:text-5xl">
                 TKG
@@ -12,4 +14,7 @@ export default function Hero() {
             </p>
         </section>
     );
-}
+});
+
+Hero.displayName = "Hero";
+export default Hero;
