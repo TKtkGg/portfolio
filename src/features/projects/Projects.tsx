@@ -1,6 +1,10 @@
+"use client";
+
 import ProjectCard from "@/components/ProjectCard";
 import { FC, memo } from "react";
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
+import { fadeInUp } from "@/lib/motion";
 
 const projects = [
     {
@@ -49,7 +53,14 @@ const projects = [
 
 const Projects: FC = memo(() => {
     return (
-        <section id="projects" className="px-6 py-20">
+        <motion.section 
+            id="projects" 
+            className="px-6 py-20"
+            initial="hidden"
+            variants={fadeInUp as Variants}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+        >
             <h2 className="mb-12 text-center text-4xl font-bold text-black">
                 Projects
             </h2>
@@ -60,7 +71,7 @@ const Projects: FC = memo(() => {
                     </div>
                 ))}
             </div>
-        </section>
+        </motion.section>
     );
 });
 

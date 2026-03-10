@@ -1,11 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { FC, memo } from "react";
+import { motion, Variants } from "framer-motion";
+import { fadeInUp } from "@/lib/motion";
 
 const GITHUB_URL = "https://github.com/TKtkGg"
 
 const Hero: FC = memo(() => {
     return (
-        <section id="hero" className="relative min-h-[90vh] w-full overflow-hidden">
+        <motion.section 
+            id="hero" 
+            className="relative min-h-[90vh] w-full overflow-hidden"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp as Variants}
+        >
             {/* 背景画像 */}
             <div className="absolute inset-0">
                 <Image 
@@ -53,7 +63,7 @@ const Hero: FC = memo(() => {
                     className="h-10 w-10 object-contain invert"
                 />
             </a>
-        </section>
+        </motion.section>
     );
 });
 

@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { FC, memo } from "react";
+import { motion, Variants } from "framer-motion";
+import { fadeInUp } from "@/lib/motion";
 
 type SkillItem = {
   id: string;
@@ -25,7 +29,14 @@ const learning: SkillItem[] = [
 
 const Skills: FC = memo(() => {
   return (
-    <section id="skills" className="px-6 py-20">
+    <motion.section 
+      id="skills" 
+      className="px-6 py-20"
+      initial="hidden"
+      variants={fadeInUp as Variants}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <h2 className="mb-12 text-center text-4xl font-bold text-black">
         Skills
       </h2>
@@ -67,7 +78,7 @@ const Skills: FC = memo(() => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 });
 

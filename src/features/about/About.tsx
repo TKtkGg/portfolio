@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { FC, memo, useState } from "react";
+import { motion, Variants, AnimatePresence } from "framer-motion";
+import { fadeInUp } from "@/lib/motion";
 
 const tabs = [
     { id: "intro", label: "Intro"},
@@ -21,7 +23,14 @@ const About: FC = memo(() => {
     const [activeTab, setActiveTab] = useState<(typeof tabs)[number]["id"]>("intro");
 
     return(
-        <section id="about" className="px-6 py-20">
+        <motion.section 
+            id="about" 
+            className="px-6 py-20"
+            initial="hidden"
+            variants={fadeInUp as Variants}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+        >
             <h2 className="mb-12 text-center text-4xl font-bold text-black">About</h2>
             <div className="mx-auto flex max-w-5xl flex-col items-center gap-30 md:flex-row md:items-start">
                 {/* 左：写真 */}
@@ -39,10 +48,10 @@ const About: FC = memo(() => {
                             <button 
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`px-4 py-3 text-sm font-medium transition-colors ${
+                                className={`px-4 py-3 text-sm font-medium transition-all duration-500 ${
                                     activeTab === tab.id
                                         ? "border-b-2 border-black text-black"
-                                        : "text-gray-500 hover:text-black"
+                                        : "border-b-2 border-transparent text-gray-500 hover:text-black"
                                 }`}
                             >
                                 {tab.label}
@@ -52,13 +61,22 @@ const About: FC = memo(() => {
 
                     {/* 説明 */}
                     <div className="mt-6 min-h-[120px]">
-                        <p className="whitespace-pre-wrap break-words text-gray-600">
-                            {tabContents[activeTab]}
-                        </p>
+                        <AnimatePresence mode="wait">
+                            <motion.p
+                                key={activeTab} 
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -8 }}
+                                transition={{ duration: 0.2 }}
+                                className="whitespace-pre-wrap break-words text-gray-600"
+                            >
+                                {tabContents[activeTab]}
+                            </motion.p>
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 })
 
