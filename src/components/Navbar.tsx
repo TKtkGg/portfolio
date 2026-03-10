@@ -25,6 +25,11 @@ const Navbar: FC = memo(() => {
                         </a>
                     </li>
                     <li>
+                        <a href="#skills" className="text-gray-600 hover:text-black">
+                            Skills
+                        </a>
+                    </li>
+                    <li>
                         <a href="#contact" className="text-gray-600 hover:text-black">
                             Contact
                         </a>
