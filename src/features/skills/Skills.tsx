@@ -4,27 +4,41 @@ import Image from "next/image";
 import { FC, memo } from "react";
 import { motion, Variants } from "framer-motion";
 import { fadeInUp } from "@/lib/motion";
+import { div } from "framer-motion/client";
+
+type SkillLevel = 0 | 1 | 2 | 3 | 4 | 5;
+
+const LEVEL_LABELS: Record<SkillLevel, string> = {
+  0: "0 : Learning",
+  1: "1 : Beginner",
+  2: "2 : Basic",
+  3: "3 : Intermediate",
+  4: "4 : Advanced",
+  5: "5 : Expert",
+}
 
 type SkillItem = {
   id: string;
   name: string;
   src: string;
+  level: SkillLevel;
+  experience: string;
 };
 
 const skills: SkillItem[] = [
-  { id: "1", name: "React", src: "/icons/react-original.svg" },
-  { id: "2", name: "Next.js", src: "/icons/nextjs-original.svg" },
-  { id: "3", name: "TypeScript", src: "/icons/typescript-original.svg" },
-  { id: "4", name: "Python", src: "/icons/python-original.svg" },
-  { id: "5", name: "HTML", src: "/icons/html5-original.svg" },
-  { id: "6", name: "CSS", src: "/icons/css3-original.svg" },
-  { id: "7", name: "Django", src: "/icons/django-plain.svg" },
+  { id: "1", name: "React", src: "/icons/react-original.svg", level: 2, experience: "1\u00A0month" },
+  { id: "2", name: "Next.js", src: "/icons/nextjs-original.svg", level: 2, experience: "1\u00A0month" },
+  { id: "3", name: "TypeScript", src: "/icons/typescript-original.svg", level: 2, experience: "1\u00A0month" },
+  { id: "4", name: "Python", src: "/icons/python-original.svg", level: 3, experience: "1\u00A0year" },
+  { id: "5", name: "HTML", src: "/icons/html5-original.svg", level: 3, experience: "1\u00A0year" },
+  { id: "6", name: "CSS", src: "/icons/css3-original.svg", level: 3, experience: "1\u00A0year" },
+  { id: "7", name: "Django", src: "/icons/django-plain.svg", level: 3, experience: "6\u00A0month" },
 ];
 
 const learning: SkillItem[] = [
-  { id: "1", name: "Swift", src: "/icons/swift-original.svg" },
-  { id: "2", name: "JavaScript", src: "/icons/javascript-original.svg" },
-  { id: "3", name: "Java", src: "/icons/java-original.svg" },
+  { id: "1", name: "Swift", src: "/icons/swift-original.svg", level: 0, experience: "1\u00A0month" },
+  { id: "2", name: "JavaScript", src: "/icons/javascript-original.svg", level: 0, experience: "1\u00A0month" },
+  { id: "3", name: "Java", src: "/icons/java-original.svg", level: 0, experience: "1\u00A0month" },
 ];
 
 const Skills: FC = memo(() => {
@@ -37,9 +51,12 @@ const Skills: FC = memo(() => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <h2 className="mb-12 text-center text-4xl font-bold text-black">
+      <h2 className="mb-3 text-center text-4xl font-bold text-black">
         Skills
       </h2>
+      <p className="mb-10 text-center text-lg text-gray-600">
+        {([0, 1, 2, 3, 4, 5] as const).map((n) => `${LEVEL_LABELS[n]}`).join(" / ")}
+      </p>
       <div className="mx-auto flex max-w-4xl flex-col gap-12 md:flex-row md:gap-30">
         {/* 左：習得済み */}
         <div className="flex-1">
@@ -47,7 +64,8 @@ const Skills: FC = memo(() => {
             Skills
           </h3>
           <div className="flex flex-wrap justify-center gap-6">
-            {skills.map(({ id, name, src }) => (
+            {skills.map(({ id, name, src, level, experience }) => (
+              <div key={id} className="group relative flex flex-col items-center">
                 <Image
                   key={id}
                   src={src}
@@ -56,6 +74,16 @@ const Skills: FC = memo(() => {
                   height={50}
                   className="h-15 w-15 object-contain"
                 />
+                {/* ツールチップ */}
+                <div 
+                  className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-gray-900 px-2 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100"
+                  role="tooltip"
+                >
+                  Level:{level}
+                  <br />
+                  EXP:{experience}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -65,7 +93,8 @@ const Skills: FC = memo(() => {
             Learning
           </h3>
           <div className="flex flex-wrap justify-center gap-6">
-            {learning.map(({ id, name, src }) => (
+            {learning.map(({ id, name, src, level, experience }) => (
+              <div key={id} className="group relative flex flex-col items-center">
                 <Image
                   key={id}
                   src={src}
@@ -74,6 +103,16 @@ const Skills: FC = memo(() => {
                   height={32}
                   className="h-15 w-15 object-contain"
                 />
+                {/* ツールチップ */}
+                <div 
+                  className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-gray-900 px-2 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100"
+                  role="tooltip"
+                >
+                  Level:{level}
+                  <br />
+                  EXP:{experience}
+                </div>
+              </div>
             ))}
           </div>
         </div>
