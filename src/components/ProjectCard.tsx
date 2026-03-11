@@ -12,14 +12,12 @@ type WrapperProps = {
 
 const Wrapper: FC<WrapperProps> = ({ href, children }) => 
     href ? (
-        <a 
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
+        <div 
+            onClick={() => href && window.open(href, "_blank")}
+            className="block cursor-pointer"
         >
             {children}
-        </a>
+        </div>
     ) : (
         <div>{children}</div>
     );

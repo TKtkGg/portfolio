@@ -1,10 +1,39 @@
 "use client";
 
-import { FC, memo } from "react";
+import { FC, memo, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { fadeInUp } from "@/lib/motion";
+import emailjs from "@emailjs/browser";
+type SubmitStatus = "idle" | "sending" | "success" | "error";
 
 const Contact: FC = memo(() => {
+    const [status, setStatus] = useState<SubmitStatus>("idle");
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setStatus("sending");
+
+        const form = e.currentTarget;
+        const templateParams = {
+            name: (form.elements.namedItem("name") as HTMLInputElement).value,
+            email: (form.elements.namedItem("email") as HTMLInputElement).value,
+            message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+        };
+
+        try {
+            await emailjs.send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+                templateParams,
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+            );
+            setStatus("success");
+            form.reset();
+        } catch {
+            setStatus("error");
+        }
+    };
+
     return (
         <motion.section 
             id="contact" 
@@ -19,7 +48,7 @@ const Contact: FC = memo(() => {
             </h2>
 
             <div className="mx-auto max-w-xl rounded-lg bg-white">
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                     {/* 名前 */}
                     <div>
                         <label htmlFor="name" className="mb-1 block text-sm font-medium text-gray-700">
@@ -69,9 +98,17 @@ const Contact: FC = memo(() => {
                     <div className="pt-2">
                         <button 
                         type="submit" 
-                        className="w-full rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800">
-                            Send
+                        disabled={status === "sending"}
+                        className="w-full rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800 disabled:opacity-50"
+                        >
+                            {status === "sending" ? "Sending..." : "Send"}
                         </button>
+                        {status === "success" && (
+                            <p className="mt-4 text-center text-sm text-green-600">Sent successfully!</p>
+                        )}
+                        {status === "error" && (
+                            <p className="mt-4 text-center text-sm text-red-600">Failed to send. Please try again.</p>
+                        )}
                     </div>
                 </form>
             </div>
