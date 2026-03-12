@@ -50,13 +50,13 @@ const Projects: FC = memo(() => {
     return (
         <motion.section 
             id="projects" 
-            className="px-6 py-20"
+            className="px-6 py-20 bg-white text-gray-900 dark:bg-zinc-900 dark:text-zinc-50"
             initial="hidden"
             variants={fadeInUp as Variants}
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
         >
-            <h2 className="mb-12 text-center text-4xl font-bold text-black">
+            <h2 className="mb-12 text-center text-4xl font-bold text-black dark:text-zinc-50">
                 Projects
             </h2>
             <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-6">

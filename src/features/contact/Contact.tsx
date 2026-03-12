@@ -37,28 +37,28 @@ const Contact: FC = memo(() => {
     return (
         <motion.section 
             id="contact" 
-            className="px-6 py-20"
+            className="px-6 py-20 bg-white text-gray-900 dark:bg-zinc-900 dark:text-zinc-50"
             initial="hidden"
             variants={fadeInUp as Variants}
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
         >
-            <h2 className="mb-8 text-center text-4xl font-bold text-black">
+            <h2 className="mb-8 text-center text-4xl font-bold text-black dark:text-zinc-50">
                 Contact
             </h2>
 
-            <div className="mx-auto max-w-xl rounded-lg bg-white">
+            <div className="mx-auto max-w-xl rounded-lg bg-white dark:bg-zinc-900">
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     {/* 名前 */}
                     <div>
-                        <label htmlFor="name" className="mb-1 block text-sm font-medium text-gray-700">
+                        <label htmlFor="name" className="mb-1 block text-sm font-medium text-gray-700 dark:text-zinc-300">
                             Name
                         </label>
                         <input 
                             type="text"
                             id="name"
                             name="name"
-                            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none transition-colors focus:border-black focus:ring-1 focus:ring-black"
+                            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition-colors placeholder:text-gray-500 focus:border-black focus:ring-1 focus:ring-black dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400 dark:focus:border-white dark:focus:ring-white"
                             placeholder="Your Name"
                             required
                         />
@@ -66,14 +66,14 @@ const Contact: FC = memo(() => {
 
                     {/* メールアドレス */}
                     <div>
-                        <label htmlFor="email" className="mb-1 block text-sm font-medium text-gray-700">
+                        <label htmlFor="email" className="mb-1 block text-sm font-medium text-gray-700 dark:text-zinc-300">
                             Email
                         </label>
                         <input 
                             type="email"
                             id="email"
                             name="email"
-                            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none transition-colors focus:border-black focus:ring-1 focus:ring-black"
+                            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition-colors placeholder:text-gray-500 focus:border-black focus:ring-1 focus:ring-black dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400 dark:focus:border-white dark:focus:ring-white"
                             placeholder="you@email.com"
                             required
                         />
@@ -81,14 +81,14 @@ const Contact: FC = memo(() => {
 
                     {/* メッセージ */}
                     <div>
-                        <label htmlFor="message" className="mb-1 block text-sm font-medium text-gray-700">
+                        <label htmlFor="message" className="mb-1 block text-sm font-medium text-gray-700 dark:text-zinc-300">
                             Message
                         </label>
                         <textarea 
                             id="message"
                             name="message"
                             rows={5}
-                            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none transition-colors focus:border-black focus:ring-1 focus:ring-black"
+                            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition-colors placeholder:text-gray-500 focus:border-black focus:ring-1 focus:ring-black dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-400 dark:focus:border-white dark:focus:ring-white"
                             placeholder="Your Message"
                             required
                         />
@@ -99,15 +99,15 @@ const Contact: FC = memo(() => {
                         <button 
                         type="submit" 
                         disabled={status === "sending"}
-                        className="w-full rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800 disabled:opacity-50"
+                        className="w-full rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
                         >
                             {status === "sending" ? "Sending..." : "Send"}
                         </button>
                         {status === "success" && (
-                            <p className="mt-4 text-center text-sm text-green-600">Sent successfully!</p>
+                            <p className="mt-4 text-center text-sm text-green-600 dark:text-green-400">Sent successfully!</p>
                         )}
                         {status === "error" && (
-                            <p className="mt-4 text-center text-sm text-red-600">Failed to send. Please try again.</p>
+                            <p className="mt-4 text-center text-sm text-red-600 dark:text-red-400">Failed to send. Please try again.</p>
                         )}
                     </div>
                 </form>

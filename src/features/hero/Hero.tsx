@@ -11,7 +11,7 @@ const Hero: FC = memo(() => {
     return (
         <motion.section 
             id="hero" 
-            className="relative min-h-[90vh] w-full overflow-hidden"
+            className="relative min-h-[90vh] w-full overflow-hidden bg-white dark:bg-zinc-900"
             initial="hidden"
             animate="visible"
             variants={fadeInUp as Variants}
@@ -35,7 +35,7 @@ const Hero: FC = memo(() => {
             />
 
             {/* 左のコンテンツ */}
-            <div className="relative z-10 flex min-h-[70vh] flex-col justify-center px-8 py-20 ml-25 md:max-w-[45%] md:px-12 lg:px-16">
+            <div className="relative z-9 flex min-h-[70vh] flex-col justify-center px-8 py-20 ml-25 md:max-w-[45%] md:px-12 lg:px-16">
                 <h1 className="text-left text-5xl font-bold tracking-tight text-white md:text-5xl">
                     TKG
                 </h1>

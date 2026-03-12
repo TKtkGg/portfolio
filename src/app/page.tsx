@@ -6,7 +6,7 @@ import Skills from "@/features/skills/Skills";
 
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen bg-white dark:bg-zinc-900">
       <Hero />
       <About />
       <Projects />
