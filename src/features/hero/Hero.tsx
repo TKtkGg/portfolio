@@ -35,15 +35,12 @@ const Hero: FC = memo(() => {
             />
 
             {/* 左のコンテンツ */}
-            <div className="relative z-9 flex min-h-[70vh] flex-col justify-center px-8 py-20 ml-25 md:max-w-[45%] md:px-12 lg:px-16">
+            <div className="relative z-9 flex min-h-[70vh] flex-col justify-center px-3 py-20 ml-25 md:max-w-[45%] md:px-12">
                 <h1 className="text-left text-5xl font-bold tracking-tight text-white md:text-5xl">
-                    TKG
+                    Yuki Miyamoto
                 </h1>
                 <p className="mt-3 text-left text-3xl text-white/90">
                     Web Developer
-                </p>
-                <p className="mt-8 text-left text-xl text-white/80">
-                    頑張るぜ
                 </p>
             </div>
 
@@ -52,7 +49,7 @@ const Hero: FC = memo(() => {
                 href={GITHUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-8 right-8 z-10 flex items-center justify-center rounded-full bg-white-10 p-3 transition hover:bg-white-20"
+                className="absolute bottom-8 right-8 z-9 flex items-center justify-center rounded-full bg-white-10 p-3 transition hover:bg-white-20"
                 aria-label="GitHub"
             >
                 <Image 

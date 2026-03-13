@@ -4,6 +4,7 @@ import Image from "next/image";
 import { FC, memo } from "react";
 import { motion, Variants } from "framer-motion";
 import { fadeInUp } from "@/lib/motion";
+import { span } from "framer-motion/client";
 
 type SkillLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -54,7 +55,13 @@ const Skills: FC = memo(() => {
         Skills
       </h2>
       <p className="mb-10 text-center text-lg text-gray-600 dark:text-zinc-400">
-        {([0, 1, 2, 3, 4, 5] as const).map((n) => `${LEVEL_LABELS[n]}`).join(" / ")}
+        {([0, 1, 2, 3, 4, 5] as const).map((n, index) => (
+          <span key={n}>
+            {LEVEL_LABELS[n]}
+            {index !== 5 && " / "}
+            {n === 2 && <br className="block md:hidden" />}
+          </span>
+        ))}
       </p>
       <div className="mx-auto flex max-w-4xl flex-col gap-12 md:flex-row md:gap-30">
         {/* 左：習得済み */}
@@ -64,7 +71,7 @@ const Skills: FC = memo(() => {
           </h3>
           <div className="flex flex-wrap justify-center gap-6">
             {skills.map(({ id, name, src, level, experience }) => (
-              <div key={id} className="group relative flex flex-col items-center">
+              <div key={id} className="group relative flex flex-col items-center" tabIndex={0}>
                 <Image
                   key={id}
                   src={src}
@@ -75,7 +82,12 @@ const Skills: FC = memo(() => {
                 />
                 {/* ツールチップ */}
                 <div 
-                  className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-gray-900 dark:bg-zinc-800 px-2 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100"
+                  className="
+                    pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 
+                    rounded bg-gray-900 dark:bg-zinc-800 px-2 py-1 text-xs text-white 
+                    opacity-0 transition 
+                    md:group-hover:opacity-100 max-md:group-focus:opacity-100 max-md:group-active:opacity-100
+                  "
                   role="tooltip"
                 >
                   Level:{level}
@@ -87,13 +99,13 @@ const Skills: FC = memo(() => {
           </div>
         </div>
         {/* 右：学習中 */}
-        <div className="flex-1 ml-20">
+        <div className="flex-1 md:ml-20">
           <h3 className="mb-6 text-center text-lg font-semibold text-black dark:text-zinc-50">
             Learning
           </h3>
           <div className="flex flex-wrap justify-center gap-6">
             {learning.map(({ id, name, src, level, experience }) => (
-              <div key={id} className="group relative flex flex-col items-center">
+              <div key={id} className="group relative flex flex-col items-center" tabIndex={0}>
                 <Image
                   key={id}
                   src={src}
@@ -104,7 +116,12 @@ const Skills: FC = memo(() => {
                 />
                 {/* ツールチップ */}
                 <div 
-                  className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-gray-900 dark:bg-zinc-800 px-2 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100"
+                  className="
+                    pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 
+                    rounded bg-gray-900 dark:bg-zinc-800 px-2 py-1 text-xs text-white 
+                    opacity-0 transition 
+                    md:group-hover:opacity-100 max-md:group-focus:opacity-100 max-md:group-active:opacity-100
+                  "
                   role="tooltip"
                 >
                   Level:{level}

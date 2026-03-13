@@ -32,16 +32,16 @@ const About: FC = memo(() => {
             viewport={{ once: true, amount: 0.2 }}
         >
             <h2 className="mb-12 text-center text-4xl font-bold text-black dark:text-zinc-50">About</h2>
-            <div className="mx-auto flex max-w-5xl flex-col items-center gap-30 md:flex-row md:items-start">
+            <div className="mx-auto flex max-w-5xl flex-col items-center gap-5 lg:gap-30 lg:flex-row lg:items-start">
                 {/* 左：写真 */}
                 <div className="flex-shrink-0">
-                    <div className="relative h-64 w-64 overflow-hidden rounded-full bg-gray-200 md:h-100 md:w-100 dark:bg-zinc-800">
+                    <div className="relative h-64 w-64 overflow-hidden rounded-full bg-gray-200 mx-auto lg:h-100 lg:w-100 dark:bg-zinc-800">
                         <Image src="/images/about.jpg" alt="プロフィール写真" fill className="object-cover" />
                     </div>
                 </div>
 
                 {/* 右：タブ・説明 */}
-                <div className="flex-1 ml-10 md:ml-17">
+                <div className="mt-10 flex-1 text-left lg:mt-0 lg:ml-17">
                     {/* タブ */}
                     <div className="inline-flex border-b border-gray-200 dark:border-zinc-800">
                         {tabs.map((tab) => (
