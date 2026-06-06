@@ -4,7 +4,6 @@ import Image from "next/image";
 import { FC, memo } from "react";
 import { motion, Variants } from "framer-motion";
 import { fadeInUp } from "@/lib/motion";
-import { span } from "framer-motion/client";
 
 type SkillLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -26,19 +25,21 @@ type SkillItem = {
 };
 
 const skills: SkillItem[] = [
-  { id: "1", name: "React", src: "/icons/react-original.svg", level: 2, experience: "1\u00A0month" },
-  { id: "2", name: "Next.js", src: "/icons/nextjs-original.svg", level: 2, experience: "1\u00A0month" },
-  { id: "3", name: "TypeScript", src: "/icons/typescript-original.svg", level: 2, experience: "1\u00A0month" },
-  { id: "4", name: "Python", src: "/icons/python-original.svg", level: 3, experience: "1\u00A0year" },
-  { id: "5", name: "HTML", src: "/icons/html5-original.svg", level: 3, experience: "1\u00A0year" },
-  { id: "6", name: "CSS", src: "/icons/css3-original.svg", level: 3, experience: "1\u00A0year" },
-  { id: "7", name: "Django", src: "/icons/django-plain.svg", level: 3, experience: "6\u00A0month" },
+  { id: "1", name: "Python", src: "/icons/python-original.svg", level: 3, experience: "1\u00A0year" },
+  { id: "2", name: "Django", src: "/icons/django-plain.svg", level: 3, experience: "8\u00A0month" },
+  { id: "3", name: "Java", src: "/icons/java-original.svg", level: 2, experience: "3\u00A0month" },
+  { id: "4", name: "Spring", src: "/icons/spring-original.svg", level: 2, experience: "3\u00A0month" },
+  { id: "5", name: "React", src: "/icons/react-original.svg", level: 2, experience: "3\u00A0month" },
+  { id: "6", name: "Next.js", src: "/icons/nextjs-original.svg", level: 2, experience: "3\u00A0month" },
+  { id: "7", name: "TypeScript", src: "/icons/typescript-original.svg", level: 2, experience: "3\u00A0month" },
+  { id: "8", name: "JavaScript", src: "/icons/javascript-original.svg", level: 2, experience: "3\u00A0month" },
+  { id: "9", name: "HTML", src: "/icons/html5-original.svg", level: 3, experience: "1\u00A0year" },
+  { id: "10", name: "CSS", src: "/icons/css3-original.svg", level: 3, experience: "1\u00A0year" },
 ];
 
 const learning: SkillItem[] = [
-  { id: "1", name: "Swift", src: "/icons/swift-original.svg", level: 0, experience: "1\u00A0month" },
-  { id: "2", name: "JavaScript", src: "/icons/javascript-original.svg", level: 0, experience: "1\u00A0month" },
-  { id: "3", name: "Java", src: "/icons/java-original.svg", level: 0, experience: "1\u00A0month" },
+  { id: "1", name: "postgreSQL", src: "/icons/postgresql-original-wordmark.svg", level: 0, experience: "1\u00A0month" },
+
 ];
 
 const Skills: FC = memo(() => {
