@@ -14,19 +14,19 @@ const Wrapper: FC<WrapperProps> = ({ href, children }) =>
     href ? (
         <div 
             onClick={() => href && window.open(href, "_blank")}
-            className="block cursor-pointer"
+            className="flex h-full cursor-pointer flex-col"
         >
             {children}
         </div>
     ) : (
-        <div>{children}</div>
+        <div className="flex h-full flex-col">{children}</div>
     );
 
 const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
     const { title, description, icon, techStack, demoUrl, githubUrl } = project;
 
     return(
-        <div className="min-h-[200px] rounded-lg border border-gray-200 bg-white p-6 shadow-md transition-transform duration-200 hover:-translate-y-2 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="flex h-full flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-md transition-transform duration-200 hover:-translate-y-2 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
             <Wrapper href={demoUrl}>
                 {icon && (
                     <div className="mb-4 flex justify-center">
@@ -34,7 +34,7 @@ const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                     </div>
                 )}
                 <h3 className="text-xl font-semibold text-black text-center dark:text-zinc-50">{title}</h3>
-                <p className="mt-2 break-words text-gray-600 text-center dark:text-zinc-400">{description}</p>
+                <p className="mt-2 flex-1 break-words text-gray-600 text-center dark:text-zinc-400">{description}</p>
 
                 {/* 使用技術 */}
                 <ul className="mt-4 flex flex-wrap gap-2 text-xs text-gray-500 dark:text-zinc-400">

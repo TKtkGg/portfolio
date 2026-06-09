@@ -27,9 +27,9 @@ const projects: Project[] = [
     },
     {
         id: "2",
-        title: "Explore-Mass-Game(制作中)",
+        title: "LimitExplore(制作中)",
         description: "限られたマスの中で探索を繰り返し、強くなるゲームです。宝箱を開けたり、カードを集めたりして強くなり、最終的なスコアで他プレイヤーと競います。",
-        icon: <Image src="/img/explore.png" alt="explore-mass" width={100} height={100} />,
+        icon: <Image src="/img/explore.png" alt="LimitExplore" width={100} height={100} />,
         techStack: ["Next.js", "Tailwind CSS", "TypeScript", "Java", "Spring-boot", "postgreSQL"],
         githubUrl: "https://github.com/TKtkGg/explore-mass-game",
     },
@@ -57,9 +57,9 @@ const Projects: FC = memo(() => {
             <h2 className="mb-12 text-center text-4xl font-bold text-black dark:text-zinc-50">
                 Projects
             </h2>
-            <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-6">
+            <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
                 {projects.map((project) => (
-                    <div key={project.id} className="min-w-[280px] flex-1 basis-[calc(33.333%-1rem)]">
+                    <div key={project.id} className="h-full">
                         <ProjectCard project={project} />
                     </div>
                 ))}

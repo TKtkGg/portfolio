@@ -20,25 +20,26 @@ type SkillItem = {
   id: string;
   name: string;
   src: string;
+  langName: string;
   level: SkillLevel;
   experience: string;
 };
 
 const skills: SkillItem[] = [
-  { id: "1", name: "Python", src: "/icons/python-original.svg", level: 3, experience: "1\u00A0year" },
-  { id: "2", name: "Django", src: "/icons/django-plain.svg", level: 3, experience: "8\u00A0month" },
-  { id: "3", name: "Java", src: "/icons/java-original.svg", level: 2, experience: "3\u00A0month" },
-  { id: "4", name: "Spring", src: "/icons/spring-original.svg", level: 2, experience: "3\u00A0month" },
-  { id: "5", name: "React", src: "/icons/react-original.svg", level: 2, experience: "3\u00A0month" },
-  { id: "6", name: "Next.js", src: "/icons/nextjs-original.svg", level: 2, experience: "3\u00A0month" },
-  { id: "7", name: "TypeScript", src: "/icons/typescript-original.svg", level: 2, experience: "3\u00A0month" },
-  { id: "8", name: "JavaScript", src: "/icons/javascript-original.svg", level: 2, experience: "3\u00A0month" },
-  { id: "9", name: "HTML", src: "/icons/html5-original.svg", level: 3, experience: "1\u00A0year" },
-  { id: "10", name: "CSS", src: "/icons/css3-original.svg", level: 3, experience: "1\u00A0year" },
+  { id: "1", name: "Python", src: "/icons/python-original.svg", langName: "Python", level: 3, experience: "1\u00A0year" },
+  { id: "2", name: "Django", src: "/icons/django-plain.svg", langName: "Django", level: 3, experience: "8\u00A0month" },
+  { id: "3", name: "Java", src: "/icons/java-original.svg", langName: "Java", level: 2, experience: "3\u00A0month" },
+  { id: "4", name: "Spring", src: "/icons/spring-original.svg", langName: "Spring", level: 2, experience: "3\u00A0month" },
+  { id: "5", name: "React", src: "/icons/react-original.svg", langName: "React", level: 2, experience: "3\u00A0month" },
+  { id: "6", name: "Next.js", src: "/icons/nextjs-original.svg", langName: "Next.js", level: 2, experience: "3\u00A0month" },
+  { id: "7", name: "TypeScript", src: "/icons/typescript-original.svg", langName: "TypeScript", level: 2, experience: "3\u00A0month" },
+  { id: "8", name: "JavaScript", src: "/icons/javascript-original.svg", langName: "JavaScript", level: 2, experience: "3\u00A0month" },
+  { id: "9", name: "HTML", src: "/icons/html5-original.svg", langName: "HTML", level: 3, experience: "1\u00A0year" },
+  { id: "10", name: "CSS", src: "/icons/css3-original.svg", langName: "CSS", level: 3, experience: "1\u00A0year" },
 ];
 
 const learning: SkillItem[] = [
-  { id: "1", name: "postgreSQL", src: "/icons/postgresql-original-wordmark.svg", level: 0, experience: "1\u00A0month" },
+  { id: "1", name: "postgreSQL", src: "/icons/postgresql-original-wordmark.svg", langName: "postgreSQL", level: 0, experience: "1\u00A0month" },
 
 ];
 
@@ -71,7 +72,7 @@ const Skills: FC = memo(() => {
             Skills
           </h3>
           <div className="flex flex-wrap justify-center gap-6">
-            {skills.map(({ id, name, src, level, experience }) => (
+            {skills.map(({ id, name, src, langName, level, experience }) => (
               <div key={id} className="group relative flex flex-col items-center" tabIndex={0}>
                 <Image
                   key={id}
@@ -91,6 +92,8 @@ const Skills: FC = memo(() => {
                   "
                   role="tooltip"
                 >
+                  {langName}
+                  <br />
                   Level:{level}
                   <br />
                   EXP:{experience}
@@ -105,7 +108,7 @@ const Skills: FC = memo(() => {
             Learning
           </h3>
           <div className="flex flex-wrap justify-center gap-6">
-            {learning.map(({ id, name, src, level, experience }) => (
+            {learning.map(({ id, name, src, langName, level, experience }) => (
               <div key={id} className="group relative flex flex-col items-center" tabIndex={0}>
                 <Image
                   key={id}
@@ -125,6 +128,8 @@ const Skills: FC = memo(() => {
                   "
                   role="tooltip"
                 >
+                  {langName}
+                  <br />
                   Level:{level}
                   <br />
                   EXP:{experience}
