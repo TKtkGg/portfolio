@@ -21,7 +21,7 @@ const projects: Project[] = [
         id: "1",
         title: "Rebirth/リバース(制作中)",
         description: "敵との戦闘を繰り返して強くなるRPGゲームです。ショップ・クエスト・バトルアニメーションなど、ゲームらしい要素を盛り込んでいます。",
-        icon: <Image src="/img/rebirth.png" alt="rebirth" width={100} height={100} />,
+        icon: <Image src="/img/Rebirth.png" alt="rebirth" width={100} height={100} />,
         techStack: ["Next.js", "React", "TypeScript", "Python", "Django", "SQLite"],
         githubUrl: "https://github.com/TKtkGg/Rebirth-RPG-Game-",
     },
