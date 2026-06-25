@@ -27,10 +27,11 @@ const projects: Project[] = [
     },
     {
         id: "2",
-        title: "LimitExplore(制作中)",
+        title: "LimitExplore(DEMO)",
         description: "限られたマスの中で探索を繰り返し、強くなるゲームです。宝箱を開けたり、カードを集めたりして強くなり、最終的なスコアで他プレイヤーと競います。",
         icon: <Image src="/img/explore.png" alt="LimitExplore" width={100} height={100} />,
         techStack: ["Next.js", "Tailwind CSS", "TypeScript", "Java", "Spring-boot", "postgreSQL"],
+        demoUrl: "https://limit-explore.vercel.app/",
         githubUrl: "https://github.com/TKtkGg/explore-mass-game",
     },
     {
