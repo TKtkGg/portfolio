@@ -1,8 +1,8 @@
 "use client";
 
 import ProjectCard from "@/components/ProjectCard";
-import { FC, memo } from "react";
-import Image from "next/image";
+import ProjectModal from "@/components/ProjectModal";
+import { FC, memo, useCallback, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { fadeInUp } from "@/lib/motion";
 
@@ -10,7 +10,8 @@ export type Project = {
     id: string;
     title: string;
     description: string;
-    icon?: React.ReactNode;
+    imageSrc: string;
+    imageAlt?: string;
     techStack: string[];
     demoUrl?: string;
     githubUrl?: string;
@@ -19,26 +20,19 @@ export type Project = {
 const projects: Project[] = [
     {
         id: "1",
-        title: "Rebirth/リバース(制作中)",
-        description: "敵との戦闘を繰り返して強くなるRPGゲームです。ショップ・クエスト・バトルアニメーションなど、ゲームらしい要素を盛り込んでいます。",
-        icon: <Image src="/img/Rebirth.png" alt="rebirth" width={100} height={100} />,
-        techStack: ["Next.js", "React", "TypeScript", "Python", "Django", "SQLite"],
-        githubUrl: "https://github.com/TKtkGg/Rebirth-RPG-Game-",
-    },
-    {
-        id: "2",
-        title: "LimitExplore(DEMO)",
+        title: "LimitExplore",
         description: "限られたマスの中で探索を繰り返し、強くなるゲームです。宝箱を開けたり、カードを集めたりして強くなり、最終的なスコアで他プレイヤーと競います。",
-        icon: <Image src="/img/explore.png" alt="LimitExplore" width={100} height={100} />,
+        imageSrc: "/img/explore.png",
+        imageAlt: "LimitExplore",
         techStack: ["Next.js", "Tailwind CSS", "TypeScript", "Java", "Spring-boot", "postgreSQL"],
-        demoUrl: "https://limit-explore.vercel.app/",
         githubUrl: "https://github.com/TKtkGg/explore-mass-game",
     },
     {
-        id: "3",
+        id: "2",
         title: "TODO-WORLD",
         description: "TODOリストを管理するサイトです。TODOを追加・編集・削除でき、世界中のユーザーで自分のTODOを共有することができます。",
-        icon: <Image src="/img/todo.png" alt="todo-world" width={100} height={100} />,
+        imageSrc: "/img/todo.png",
+        imageAlt: "todo-world",
         techStack: ["React", "Chakra UI", "TypeScript", "Python", "Django", "SQLite"],
         demoUrl: "https://todo-world-pqo8.vercel.app/",
         githubUrl: "https://github.com/TKtkGg/todo-world",
@@ -46,9 +40,12 @@ const projects: Project[] = [
 ];
 
 const Projects: FC = memo(() => {
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const closeModal = useCallback(() => setSelectedProject(null), []);
+
     return (
-        <motion.section 
-            id="projects" 
+        <motion.section
+            id="projects"
             className="px-6 py-20 bg-white text-gray-900 dark:bg-zinc-900 dark:text-zinc-50"
             initial="hidden"
             variants={fadeInUp as Variants}
@@ -58,13 +55,16 @@ const Projects: FC = memo(() => {
             <h2 className="mb-12 text-center text-4xl font-bold text-black dark:text-zinc-50">
                 Projects
             </h2>
-            <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="mx-auto grid max-w-6xl grid-cols-1 justify-items-stretch gap-8 md:grid-cols-2">
                 {projects.map((project) => (
-                    <div key={project.id} className="h-full">
-                        <ProjectCard project={project} />
-                    </div>
+                    <ProjectCard
+                        key={project.id}
+                        project={project}
+                        onClick={() => setSelectedProject(project)}
+                    />
                 ))}
             </div>
+            <ProjectModal project={selectedProject} onClose={closeModal} />
         </motion.section>
     );
 });
