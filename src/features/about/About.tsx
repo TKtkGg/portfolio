@@ -13,9 +13,9 @@ const tabs = [
 ]
 
 const tabContents: Record<(typeof tabs)[number]["id"], string> = {
-    intro: "初めまして、宮本 侑季です！\nWebエンジニア志望の高校2年生です！\n「使う人の立場で考え、シンプルで可読性の高いコードを書く」ことを大切にしています。\n基本的には個人開発を行っており、最近はPythonやJava、Next.jsを使ったゲームサイトを制作しています。",
-    skills: "【フロントエンド】\nReact / Next.js / TypeScript / JavaScript / HTML / CSS\n【バックエンド】\nPython / Django / Java / Spring\n【データベース】\nSQLite / postgreSQL",
-    current: "現在は主にRebirthとLimitExploreを制作しています。\nCursorAIをメンターとして、実践的なコードの書き方、\nアプリケーション制作のノウハウを学びながら、\n積極的にコーディングを行なっています。",
+    intro: "初めまして、宮本侑季です！\nバックエンドエンジニア志望の高校2年生です！\nAIに頼り切りにならず、自分自身でコードを書くことを大切にしています。AIには補助的な役割を持たせ、設計の手伝いやコードレビューなどを行なってもらっています。\n現在の課題は設計や要件定義などの上流工程なので、これからはそこに対する学習を行っていきたいと考えています。",
+    skills: "【Frontend】\nReact / Next.js / TypeScript / JavaScript / HTML / CSS\n【Backend】\nPython / Django / Java / Spring\n【Database】\nPostgreSQL",
+    current: "現在は、基本情報技術者試験の勉強と個人開発を両立しています。個人開発では、現在Java×Next.jsを使った、SelfControlという予定管理アプリケーションを制作しています。",
     career: "2025年4月\nKADOKAWAドワンゴ情報工科学院\nITプログラミング学部エンジニア専攻・\nS高等学校普通科 入学\n2028年3月\nKADOKAWAドワンゴ情報工科学院\nITプログラミング学部エンジニア専攻・\nS高等学校普通科 卒業予定",
 }
 
@@ -41,7 +41,7 @@ const About: FC = memo(() => {
                 </div>
 
                 {/* 右：タブ・説明 */}
-                <div className="text-black font-bold mt-10 flex-1 text-left lg:mt-0 lg:ml-17">
+                <div className="text-black font-bold text-lg mt-10 flex-1 text-left lg:mt-0 lg:ml-17">
                     {/* タブ */}
                     <div className="inline-flex border-b border-gray-200 dark:border-zinc-800">
                         {tabs.map((tab) => (
